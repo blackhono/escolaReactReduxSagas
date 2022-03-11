@@ -14,7 +14,15 @@ import MyRoute from './MyRoute'
 function AppRoutes() {
   return (
     <Routes>
-      <Route exact path='/' element={<Alunos />} />
+      <Route
+        exact
+        path='/'
+        element={
+          <MyRoute>
+            <Alunos />
+          </MyRoute>
+        }
+      />
       <Route
         exact
         path='/Aluno/:id/edit'
