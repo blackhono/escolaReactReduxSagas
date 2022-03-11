@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react'
 import { get } from 'lodash'
 import { Link } from 'react-router-dom'
 import { FaUserCircle, FaEdit, FaWindowClose } from 'react-icons/fa'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { useSelector } from 'react-redux'
 import { api, listAlunos } from '../../services/api'
+import * as actions from '../../storeRedux/modules/loading/actions'
 
 import { AlunosContainer, ProfilePicture } from './styled'
 import { Container } from '../../styles/GlobalStyles'
@@ -14,21 +15,25 @@ import Loading from '../../components/Loading'
 
 export default function Alunos() {
   const [alunos, setAlunos] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
+  const selectorLoading = useSelector((state) => state.loading.isLoading)
+  const dispatch = useDispatch()
+  // const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
     ;(async () => {
-      setIsLoading(true)
+      // setIsLoading(true)
+      dispatch(actions.loadingRequest())
       const response = await listAlunos()
       setAlunos(response.data)
-      setIsLoading(false)
+      dispatch(actions.loadingfinished())
+      // setIsLoading(false)
     })()
-  }, [])
+  }, [dispatch])
 
   return (
     <>
       <Container>
         <h1>Alunos</h1>
-        <Loading isLoading={isLoading} />
+        <Loading isLoading={selectorLoading} />
       </Container>
       <Container>
         <AlunosContainer>
