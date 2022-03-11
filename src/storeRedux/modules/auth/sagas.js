@@ -16,7 +16,7 @@ function* loginRequest({ payload }) {
     toast.success('Login realizado com sucesso')
     api.defaults.headers.Authorization = `Bearer ${response.data.token}`
 
-    history.push(payload.prevPath)
+    // history.push(payload.prevPath)
   } catch (e) {
     yield put(userActions.loginFailure())
     delete api.defaults.headers.Authorization
