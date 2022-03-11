@@ -1,0 +1,14 @@
+os estados do redux vai dar para ver em toda aplicação
+
+
+nunca devemos manipular o estado atual da aplicação, sempre crie um novo estado.
+
+
+é legal usar o rootReducer pois digamos que tenha que passar dois reducers
+porém não para para passar assim const store = createStore(reducer1, reducer2)
+pense em algo como voce passando tanto o usuario como o carrinho de compras dele
+pelo site todo.
+então criamos um mixedReducer
+
+
+vou usar redux Saga para realizar o pedido do meu login e atualizar o user no site

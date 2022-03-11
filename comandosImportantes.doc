@@ -1,0 +1,45 @@
+para usar styled components
+
+instalei a extensão do vscode vs-styled-components
+para ter o syntex highlight, se não fica muito complexo
+para codar o styled-component.
+
+ai sim parti para a instalação do styled-components
+
+npm i styled-components
+
+para icones
+npm i react-icons
+
+para roteamento
+
+npm i react-router-dom
+
+para armazenar historico de paginação
+npm i history
+
+
+axios para chamadas da api
+
+npm i axios
+
+para mensageria
+npm i react-toastify
+
+
+mesmo já tendo os CONTEXTS eu decidi usar redux tbm para testar.
+
+npm i redux react-redux
+
+para começar a usar o redux saga
+
+npm i redux-saga
+
+
+para persistencia dos dados
+
+npm i redux-persist
+
+para caso não tenha um array quando apresento uma informação (caso fotos dos alunos
+pois pode haver alunos sem foto então pode quebrar a aplicação visualizar page alunos)
+npm i loadash
