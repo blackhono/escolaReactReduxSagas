@@ -15,17 +15,20 @@ import Loading from '../../components/Loading'
 
 export default function Alunos() {
   const [alunos, setAlunos] = useState([])
-  const selectorLoading = useSelector((state) => state.loading.isLoading)
+  const selectorLoading = useSelector((state) => {
+    console.log(state)
+    return state.auth.isLoading
+  })
   const dispatch = useDispatch()
-  // const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   useEffect(() => {
     ;(async () => {
-      // setIsLoading(true)
-      dispatch(actions.loadingRequest())
+      setIsLoading(true)
+      // dispatch(actions.loadingRequest())
       const response = await listAlunos()
       setAlunos(response.data)
-      dispatch(actions.loadingfinished())
-      // setIsLoading(false)
+      // dispatch(actions.loadingfinished())
+      setIsLoading(false)
     })()
   }, [dispatch])
 
@@ -33,7 +36,7 @@ export default function Alunos() {
     <>
       <Container>
         <h1>Alunos</h1>
-        <Loading isLoading={selectorLoading} />
+        <Loading isLoading={isLoading} />
       </Container>
       <Container>
         <AlunosContainer>

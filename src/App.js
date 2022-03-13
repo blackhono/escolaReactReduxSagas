@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
-// import history from './services/history'
 
 import GlobalStyles from './styles/GlobalStyles'
 
@@ -11,12 +10,13 @@ import { AuthProvider } from './contexts/auth'
 import store, { persistor } from './storeRedux/index'
 import Routes from './routes'
 import Header from './components/Header'
+import history from './services/history'
 
 function App() {
   return (
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <Router>
+    <Router history={history}>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
           <AuthProvider>
             <GlobalStyles />
             <Header />
@@ -27,9 +27,9 @@ function App() {
               theme='dark'
             />
           </AuthProvider>
-        </Router>
-      </PersistGate>
-    </Provider>
+        </PersistGate>
+      </Provider>
+    </Router>
   )
 }
 

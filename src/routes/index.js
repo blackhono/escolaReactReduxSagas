@@ -1,63 +1,72 @@
-/* eslint-disable react/no-unstable-nested-components */
 import React, { useState, useContext, Children } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 import Aluno from '../pages/Aluno'
 import Alunos from '../pages/Alunos'
 import Photos from '../pages/Photos'
-import Register from '../pages/Register'
-import Login from '../pages/Login'
+import LoginRegister from '../pages/Login'
 import Page404 from '../pages/page404'
 
 import MyRoute from './MyRoute'
+import VerifyLogginRoute from './VerifyLogginRoute'
 
-function AppRoutes() {
+function RoutesApp() {
   return (
     <Routes>
-      <Route
-        exact
-        path='/'
-        element={
-          <MyRoute>
-            <Alunos />
-          </MyRoute>
-        }
-      />
-      <Route
-        exact
-        path='/Aluno/:id/edit'
-        element={
-          <MyRoute>
-            <Aluno />
-          </MyRoute>
-        }
-      />
-      <Route
-        exact
-        path='/Aluno/'
-        element={
-          <MyRoute>
-            <Aluno />
-          </MyRoute>
-        }
-      />
-      <Route
-        exact
-        path='/photo/:id'
-        element={
-          <MyRoute>
-            <Photos />
-          </MyRoute>
-        }
-      />
-      <Route exact path='/login' element={<Login />} />
-      <Route exact path='/register' element={<Register />} />
+      <Route>
+        <Route
+          exact
+          path='/'
+          element={
+            <MyRoute>
+              <Alunos />
+            </MyRoute>
+          }
+        />
+        <Route
+          exact
+          path='/alunos'
+          element={
+            <MyRoute>
+              <Alunos />
+            </MyRoute>
+          }
+        />
+        <Route
+          exact
+          path='/Aluno/:id/edit'
+          element={
+            <MyRoute>
+              <Aluno />
+            </MyRoute>
+          }
+        />
+        <Route
+          exact
+          path='/Aluno/'
+          element={
+            <MyRoute>
+              <Aluno />
+            </MyRoute>
+          }
+        />
+        <Route
+          exact
+          path='/photo/:id'
+          element={
+            <MyRoute>
+              <Photos />
+            </MyRoute>
+          }
+        />
+      </Route>
+      <Route exact path='/login' element={<LoginRegister />} />
       <Route path='*' element={<Page404 />} />
     </Routes>
   )
 }
 
-export default AppRoutes
+export default RoutesApp
 
 /* import React from 'react'
 import { Routes, Route } from 'react-router-dom'
