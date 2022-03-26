@@ -48,3 +48,24 @@ export function editRequest(payload) {
     payload,
   }
 }
+
+export function editSuccess(payload) {
+  return {
+    type: types.EDIT_SUCCESS,
+    payload,
+  }
+}
+
+export function editFailure(payload) {
+  return {
+    type: types.EDIT_FAILURE,
+    payload,
+  }
+}
+
+export function requestFailure(payload) {
+  return {
+    type: types.REQUEST_FAILURE,
+    payload,
+  }
+}

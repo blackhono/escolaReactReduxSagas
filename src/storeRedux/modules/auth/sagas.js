@@ -26,22 +26,17 @@ function* loginRequest({ payload }) {
 
 function* registerRequest({ payload }) {
   try {
-    const response = yield createUser(payload)
-    yield put(userActions.registerSuccess())
-    toast.success('Registro realizado com sucesso')
+    if (payload.id) {
+      const response = yield editUser(payload)
+      yield put(userActions.editSuccess({ ...response.data }))
+      toast.success('Registro alterado com sucesso')
+    } else {
+      const response = yield createUser(payload)
+      yield put(userActions.registerSuccess())
+      toast.success('Registro realizado com sucesso')
+    }
   } catch (error) {
-    yield put(userActions.registerFailure())
-    const errors = get(error, 'response.data.errors', [])
-    errors.map((erro) => toast.error(erro))
-  }
-}
-
-function* editRequest({ payload }) {
-  try {
-    const response = yield editUser(payload)
-    yield put(userActions.editSuccess({ ...response.data }))
-  } catch (error) {
-    yield put(userActions.editFailure())
+    yield put(userActions.requestFailure())
     const errors = get(error, 'response.data.errors', [])
     errors.map((erro) => toast.error(erro))
   }
@@ -56,6 +51,6 @@ function persistRehydrate({ payload }) {
 export default all([
   takeLatest(types.LOGIN_REQUEST, loginRequest),
   takeLatest(types.REGISTER_REQUEST, registerRequest),
-  takeLatest(types.EDIT_REQUEST, editRequest),
+  takeLatest(types.EDIT_REQUEST, registerRequest),
   takeLatest(types.PERSIST_REHYDRATE, persistRehydrate),
 ])

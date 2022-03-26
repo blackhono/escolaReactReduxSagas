@@ -15,8 +15,14 @@ export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 export const REGISTER_FAILURE = 'REGISTER_FAILURE'
 
 export const EDIT_REQUEST = 'EDIT_REQUEST'
+export const EDIT_SUCCESS = 'EDIT_SUCCESS'
+export const EDIT_FAILURE = 'EDIT_FAILURE'
 
 /// ///////
 
 export const LOADING_REQUEST = 'LOADING_REQUEST'
 export const LOADING_FINISHED = 'LOADING_FINISHED'
+
+/// request failure ///
+
+export const REQUEST_FAILURE = 'REQUEST_FAILURE'

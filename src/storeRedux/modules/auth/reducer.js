@@ -22,7 +22,7 @@ export default function (state = initialState, action) {
     case types.LOGIN_FAILURE: {
       // console.log('falhei em agir =( (Saga redux)')
       const newState = { ...initialState }
-
+      newState.isLoading = false
       return newState
     }
 
@@ -30,6 +30,34 @@ export default function (state = initialState, action) {
       const newState = { ...state }
       // console.log('falhei em agir =( (Saga redux)')
       newState.isLoading = true
+      return newState
+    }
+
+    case types.EDIT_SUCCESS: {
+      const { payload } = action
+      const newState = { ...state }
+      newState.user.email = payload.email
+      newState.user.nome = payload.nome
+      newState.isLoading = false
+      return newState
+    }
+
+    case types.EDIT_FAILURE: {
+      const newState = { ...state }
+      newState.isLoading = false
+      return newState
+    }
+
+    case types.EDIT_REQUEST: {
+      const newState = { ...state }
+      // console.log('falhei em agir =( (Saga redux)')
+      newState.isLoading = true
+      return newState
+    }
+
+    case types.REQUEST_FAILURE: {
+      const newState = { ...state }
+      newState.isLoading = false
       return newState
     }
 

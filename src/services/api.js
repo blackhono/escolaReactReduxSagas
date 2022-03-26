@@ -28,13 +28,14 @@ export const createUser = async ({ name, email, password }) => {
 
 // Put
 
-export const editUser = async (id, nome, email) => {
-  const body = { nome, email }
+export const editUser = async ({ id, name, email, password }) => {
+  const body = {
+    nome: name,
+    email,
+    password: password || undefined,
+  }
 
-  const retorno = await api.post(`/users/${id}`, body)
-  toast.success('Cadastro alterado com sucesso')
-  const errors = get(retorno, 'retorno.data.errors', [])
-  errors.map((error) => toast.error(error))
+  const retorno = await api.put(`/users/${id}`, body)
   return retorno
 }
 
