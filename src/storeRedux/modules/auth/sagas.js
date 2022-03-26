@@ -39,8 +39,9 @@ function* registerRequest({ payload }) {
 function* editRequest({ payload }) {
   try {
     const response = yield editUser(payload)
+    yield put(userActions.editSuccess({ ...response.data }))
   } catch (error) {
-    yield put(userActions.registerFailure())
+    yield put(userActions.editFailure())
     const errors = get(error, 'response.data.errors', [])
     errors.map((erro) => toast.error(erro))
   }
